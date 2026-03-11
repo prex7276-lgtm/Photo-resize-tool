@@ -1,6 +1,80 @@
 <!DOCTYPE html>
 <html lang="hi">
-<head>
+<head><div class="card" style="border-top: 5px solid #ff5722; background: #fffcfb;">
+    <h2 style="color: #ff5722;">🚀 Prex Guru Career Dashboard</h2>
+    <p>अपनी पढ़ाई चुनें और सब कुछ (Job, Form, Result) एक जगह पाएं!</p>
+    
+    <div style="text-align: left; margin-bottom: 15px;">
+        <label><b>1. अपनी योग्यता चुनें (Education):</b></label>
+        <select id="edu" style="width: 100%; padding: 12px; margin-top: 5px; border-radius: 5px; border: 1px solid #ff5722;">
+            <option value="8">8वीं पास</option>
+            <option value="10">10वीं पास</option>
+            <option value="12">12वीं पास</option>
+            <option value="graduate">Graduate (BA, BSc, B.Com)</option>
+            <option value="bed">B.Ed / BSTC</option>
+            <option value="iti">ITI / Diploma</option>
+        </select>
+    </div>
+
+    <button class="btn" onclick="findEverything()" style="background: #ff5722; width: 100%; font-weight: bold;">मैजिक देखें (Show Results) ✨</button>
+
+    <div id="dashboardResults" style="margin-top: 20px; display: none; text-align: left;">
+        
+        <div style="background: #e3f2fd; padding: 15px; border-radius: 10px; border-left: 5px solid #2196f3; margin-bottom: 15px;">
+            <h4 style="margin: 0 0 10px 0; color: #0d47a1;">🆕 आपके लिए नई भर्तियाँ (Apply Links):</h4>
+            <ul id="jobLinks" style="padding-left: 20px; list-style-type: '👉 ';"></ul>
+        </div>
+
+        <div style="background: #f1f8e9; padding: 15px; border-radius: 10px; border-left: 5px solid #4caf50;">
+            <h4 style="margin: 0 0 10px 0; color: #1b5e20;">📊 ताज़ा रिज़ल्ट (Latest Results):</h4>
+            <ul id="resultLinks" style="padding-left: 20px; list-style-type: '✅ ';"></ul>
+        </div>
+        
+    </div>
+</div>
+
+<script>
+function findEverything() {
+    const edu = document.getElementById('edu').value;
+    const dash = document.getElementById('dashboardResults');
+    const jobList = document.getElementById('jobLinks');
+    const resultList = document.getElementById('resultLinks');
+
+    dash.style.display = 'block';
+    jobList.innerHTML = "";
+    resultList.innerHTML = "";
+
+    // --- Job Matching Logic ---
+    let jobs = [];
+    if(edu === "8" || edu === "10" || edu === "12" || edu === "graduate") {
+        jobs.push("<a href='https://indiapostgdsonline.gov.in/' target='_blank'>GDS भर्ती 2026 (Apply Now)</a>");
+    }
+    if(edu === "10" || edu === "12") {
+        jobs.push("<a href='https://hcraj.nic.in/' target='_blank'>High Court 4th Grade (Direct Apply)</a>");
+    }
+    if(edu === "12" || edu === "graduate") {
+        jobs.push("<a href='https://rsmssb.rajasthan.gov.in/' target='_blank'>Rajasthan Police / CET (Apply Here)</a>");
+    }
+    if(edu === "bed") {
+        jobs.push("<a href='https://education.rajasthan.gov.in/' target='_blank'>REET / शिक्षक भर्ती (Portal Link)</a>");
+    }
+    if(edu === "iti") {
+        jobs.push("<a href='#' target='_blank'>Railway Technician / ALP (Apply Link)</a>");
+    }
+
+    jobs.forEach(j => { jobList.innerHTML += `<li style='margin-bottom:8px;'>${j}</li>`; });
+
+    // --- Result Logic ---
+    let results = [
+        "<a href='http://rajresults.nic.in/'>RBSE 10th/12th Board Result 2026</a>",
+        "<a href='https://rsmssb.rajasthan.gov.in/'>RSMSSB पटवारी/LDC Final Result</a>",
+        "<a href='https://www.uniraj.ac.in/'>University Exam Results (BA/BSc)</a>"
+    ];
+    results.forEach(r => { resultList.innerHTML += `<li style='margin-bottom:8px;'>${r}</li>`; });
+}
+</script>
+
+  
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prex Guru Tools - राजस्थान भर्ती फोटो रिसाइज़र & Latest Jobs</title>
