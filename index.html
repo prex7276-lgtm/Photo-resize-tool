@@ -118,6 +118,56 @@
             </a>
         </div>
     </div>
+    <div class="card" style="border-top: 5px solid #28a745;">
+        <h2>Age Calculator (उम्र चेक करें)</h2>
+        <p>सरकारी फॉर्म के लिए अपनी सही उम्र निकालें</p>
+        
+        <div style="text-align: left; margin-bottom: 15px;">
+            <label>अपनी जन्म तिथि चुनें:</label>
+            <input type="date" id="dob" style="width: 100%; padding: 10px; margin-top: 5px; border-radius: 5px; border: 1px solid #ccc;">
+        </div>
+        
+        <div style="text-align: left; margin-bottom: 20px;">
+            <label>किस तारीख तक चेक करना है:</label>
+            <input type="date" id="checkDate" value="2026-01-01" style="width: 100%; padding: 10px; margin-top: 5px; border-radius: 5px; border: 1px solid #ccc;">
+        </div>
+
+        <button class="btn" onclick="calculateAge()" style="background: #007bff;">उम्र कैलकुलेट करें</button>
+
+        <div id="ageResult" style="margin-top: 20px; padding: 15px; background: #e9ecef; border-radius: 10px; display: none;">
+            <h3 style="margin: 0; color: #333;" id="finalAge"></h3>
+        </div>
+    </div>
+    <script>
+    function calculateAge() {
+        const dob = new Date(document.getElementById('dob').value);
+        const checkDate = new Date(document.getElementById('checkDate').value);
+
+        if (isNaN(dob)) {
+            alert("कृपया सही जन्म तिथि भरें!");
+            return;
+        }
+
+        let years = checkDate.getFullYear() - dob.getFullYear();
+        let months = checkDate.getMonth() - dob.getMonth();
+        let days = checkDate.getDate() - dob.getDate();
+
+        if (days < 0) {
+            months--;
+            days += new Date(checkDate.getFullYear(), checkDate.getMonth(), 0).getDate();
+        }
+        if (months < 0) {
+            years--;
+            months += 12;
+        }
+
+        const resultDiv = document.getElementById('ageResult');
+        const finalAgeText = document.getElementById('finalAge');
+        
+        resultDiv.style.display = 'block';
+        finalAgeText.innerHTML = `आपकी उम्र: <br><span style="color: #28a745;">${years} साल, ${months} महीने, ${days} दिन</span>`;
+    }
+    </script>
 
 </body>
 </html>
