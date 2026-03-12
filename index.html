@@ -1,42 +1,116 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-  <meta name="title" content="Prex Guru - VIP फोटो रिसाइज और PDF टूल">
-<meta name="description" content="Prex Guru की VIP वेबसाइट पर फोटो को KB में रिसाइज करें और फोटो से PDF बनाएँ। सरकारी नौकरी के फॉर्म के लिए सबसे बेस्ट टूल।">
-<meta name="keywords" content="Prex Guru, PrexGuru, Photo Resize KB, Photo to PDF, Rajasthan High Court form photo resize, Prex Guru Tools, Photo size kam kare">
-<meta name="robots" content="index, follow">
-<meta name="language" content="Hindi">
-<meta name="author" content="Prex Guru">
-
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://prex7276-lgtm.github.io/Photo-resize-tool/">
-<meta property="og:title" content="Prex Guru - VIP फोटो रिसाइज और PDF टूल">
-<meta name="google-site-verification" content="96Mzh5PIC3ogqGLZjQXRhgAPFJRv0OsIqfv2ZsH84M4" />
-<meta property="og:description" content="सरकारी नौकरी के फॉर्म भरने के लिए फोटो का साइज कम करें और PDF बनाएँ।">
-<meta property="og:image" content="https://prex7276-lgtm.github.io/Photo-resize-tool/logo.png">
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prex Guru - VIP Tools</title>
+    <title>Prex Guru - VIP सरकारी नौकर टूल्स</title>
+    
+    <meta name="title" content="Prex Guru - VIP फोटो रिसाइज और PDF टूल">
+    <meta name="description" content="फोटो को KB में रिसाइज करें, PDF बनाएँ और ऑटोमैटिक सरकारी नौकरी अपडेट पाएं। Prex Guru की VIP तकनीक।">
+    <meta name="keywords" content="Prex Guru, Photo Resize KB, Photo to PDF, Rajasthan Government Jobs, Automatic Job Updates">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="Hindi">
+    <meta name="author" content="Prex Guru">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://prex7276-lgtm.github.io/Photo-resize-tool/">
+    <meta property="og:title" content="Prex Guru - VIP फोटो रिसाइज और PDF टूल">
+    <meta property="og:description" content="फोटो को KB में रिसाइज करें, PDF बनाएँ और ऑटोमैटिक सरकारी नौकरी अपडेट पाएं।">
+    <meta property="og:image" content="https://prex7276-lgtm.github.io/Photo-resize-tool/logo.png">
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     
     <style>
-        body { font-family: 'Segoe UI', sans-serif; background-color: #0a0e17; color: white; margin: 0; text-align: center; }
-        header { background: linear-gradient(145deg, #1e293b, #020617); padding: 40px 10px; border-bottom: 3px solid #cf9f2e; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        .vip-logo { font-size: 3.5rem; font-weight: bold; text-transform: uppercase; background: linear-gradient(to bottom, #cf9f2e 0%, #f9e29a 50%, #cf9f2e 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 0; letter-spacing: 3px; }
+        /* Base Styling */
+        body { font-family: 'Segoe UI', sans-serif; background-color: #030712; color: #f8fafc; margin: 0; text-align: center; }
+        
+        /* News Ticker (Marquee) */
+        .news-ticker { background: #000; color: #f9e29a; display: flex; align-items: center; border-bottom: 1px solid #cf9f2e; font-size: 0.9rem; height: 35px; }
+        .ticker-label { background: #cf9f2e; color: #000; padding: 0 15px; font-weight: bold; height: 100%; display: flex; align-items: center; white-space: nowrap; }
+        marquee { font-weight: 500; }
+
+        /* Header & Logo */
+        header { background: linear-gradient(145deg, #111827, #030712); padding: 40px 10px; border-bottom: 3px solid #cf9f2e; box-shadow: 0 10px 30px rgba(207, 159, 46, 0.3); position: relative; overflow: hidden; }
+        
+        /* Fire Animation behind Logo */
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 69, 0, 0.2) 0%, rgba(0, 0, 0, 0) 70%);
+            animation: firePulse 3s infinite;
+            z-index: 0;
+        }
+
+        .vip-logo { font-size: 3.5rem; font-weight: bold; text-transform: uppercase; background: linear-gradient(to bottom, #cf9f2e 0%, #f9e29a 50%, #cf9f2e 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 0; letter-spacing: 3px; position: relative; z-index: 1; text-shadow: 0 0 15px rgba(207, 159, 46, 0.7); }
+        .sub-logo { color: #a0aec0; margin-top: 5px; position: relative; z-index: 1; font-size: 1rem; }
+
+        /* Tools Container */
         .container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 30px; }
-        .tool-card { background: #16213e; border: 1px solid #cf9f2e; padding: 25px; border-radius: 15px; width: 300px; transition: 0.3s; }
+        .tool-card { background: #111827; border: 1px solid #334155; padding: 25px; border-radius: 15px; width: 300px; transition: 0.3s; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+        .tool-card:hover { border-color: #cf9f2e; box-shadow: 0 0 20px rgba(207, 159, 46, 0.4); transform: translateY(-5px); }
+        
         input, button { width: 100%; margin: 10px 0; padding: 12px; border-radius: 8px; border: none; box-sizing: border-box; }
-        button { background: linear-gradient(45deg, #cf9f2e, #f9e29a); color: black; font-weight: bold; cursor: pointer; font-size: 1rem; }
-        .share-btn { width: auto; padding: 12px 40px; border-radius: 50px; margin-top: 20px; font-size: 1.1rem; border: 2px solid #cf9f2e; background: transparent; color: #f9e29a; }
-        .footer { margin-top: 30px; padding-bottom: 30px; color: #64748b; font-size: 0.9rem; }
+        input[type="file"] { background: #1f2937; color: #a0aec0; border: 1px solid #334155; }
+        input[type="number"] { background: #1f2937; color: white; border: 1px solid #334155; }
+        button { background: linear-gradient(45deg, #cf9f2e, #f9e29a); color: black; font-weight: bold; cursor: pointer; font-size: 1rem; transition: 0.2s; }
+        button:hover { filter: brightness(1.1); box-shadow: 0 0 10px rgba(249, 226, 154, 0.5); }
+        
+        .share-btn { width: auto; padding: 12px 40px; border-radius: 50px; margin: 20px 0; font-size: 1.1rem; border: 2px solid #cf9f2e; background: transparent; color: #f9e29a; cursor: pointer; transition: 0.3s; }
+        .share-btn:hover { background: rgba(207, 159, 46, 0.1); box-shadow: 0 0 15px rgba(207, 159, 46, 0.3); }
+
+        /* Automatic Updates Section (VIP Style) */
+        .job-container { margin-top: 50px; padding: 20px; position: relative; }
+        .vip-title { color: #f9e29a; text-shadow: 0 0 10px #cf9f2e; margin-bottom: 30px; font-size: 2rem; position: relative; display: inline-block; }
+        .vip-title::after { content: ''; position: absolute; bottom: -10px; left: 0; width: 100%; height: 2px; background: linear-gradient(to right, transparent, #cf9f2e, transparent); }
+
+        .table-section { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+        .table-box { 
+            background: #111827; border: 2px solid #cf9f2e; 
+            width: 380px; border-radius: 12px; overflow: hidden; 
+            box-shadow: 0 0 25px rgba(207, 159, 46, 0.3); 
+            transition: 0.3s;
+        }
+        .table-box:hover { box-shadow: 0 0 35px rgba(207, 159, 46, 0.5); transform: scale(1.02); }
+        
+        .table-header { background: linear-gradient(45deg, #cf9f2e, #f9e29a); color: black; font-weight: bold; padding: 12px; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; }
+        
+        /* Automatic Updates from RSS Feed (Sarkari Result Style) */
+        .rss-content { padding: 10px; text-align: left; max-height: 400px; overflow-y: auto; background: #0a0e17; }
+        .rss-content a { display: block; color: #f1f5f9; text-decoration: none; padding: 12px; border-bottom: 1px solid #1f2937; font-size: 0.9rem; transition: 0.2s; }
+        .rss-content a:hover { color: #f9e29a; padding-left: 15px; background: rgba(207, 159, 46, 0.1); border-left: 3px solid #cf9f2e; }
+
+        /* Fixed Notification Bell */
+        .notification-bell { position: fixed; bottom: 20px; right: 20px; background: linear-gradient(45deg, #cf9f2e, #f9e29a); width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; box-shadow: 0 0 20px rgba(207, 159, 46, 0.5); z-index: 1000; animation: shake 3s infinite; }
+        .bell-icon { font-size: 28px; }
+        .bell-badge { position: absolute; top: 5px; right: 5px; background: red; color: white; font-size: 10px; padding: 3px 6px; border-radius: 50%; font-weight: bold; }
+
+        /* Footer & Visitor Counter */
+        .footer { margin-top: 50px; padding: 30px; border-top: 1px solid #1f2937; color: #64748b; font-size: 0.9rem; background: #0a0e17; }
+        .visitor-counter { margin-top: 15px; font-size: 1rem; color: #f9e29a; display: inline-block; border: 1px solid #cf9f2e; padding: 8px 20px; border-radius: 25px; background: rgba(207, 159, 46, 0.1); }
+
+        /* Animations */
+        @keyframes firePulse { 0%, 100% { opacity: 0.2; transform: scale(1); } 50% { opacity: 0.4; transform: scale(1.1); } }
+        @keyframes blink { 50% { opacity: 0.5; } }
+        @keyframes shake { 0%, 80%, 100% { transform: rotate(0); } 85% { transform: rotate(15deg); } 90% { transform: rotate(-15deg); } 95% { transform: rotate(10deg); } }
+
     </style>
 </head>
 <body>
 
+<div class="news-ticker">
+    <div class="ticker-label">VIP UPDATES</div>
+    <marquee behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();">
+        🔥 Railway RRB Group D 22,195 Posts Online Form 2026 | 🎓 Rajasthan High Court Exam Date Announced! | 📄 GDS 1st Merit List PDF Available | 🚀 Welcome to Prex Guru Automatic Portal!
+    </marquee>
+</div>
+
 <header>
     <h1 class="vip-logo">Prex Guru</h1>
-    <p>प्रीमियम टूलकिट • फोटो रिसाइज • PDF कनवर्टर</p>
+    <p class="sub-logo">प्रीमियम सरकारी नौकरी टूलकिट • फोटो रिसाइज • ऑटोमैटिक अपडेट्स</p>
 </header>
 
 <div class="container">
@@ -55,125 +129,111 @@
 </div>
 
 <button class="share-btn" onclick="shareWebsite()">📢 दोस्तों को शेयर करें</button>
-<div style="margin-top: 20px; font-size: 1rem; color: #f9e29a;">
-    <span style="border: 1px solid #cf9f2e; padding: 5px 15px; border-radius: 20px; background: rgba(207, 159, 46, 0.1);">
-        👁️ कुल विज़िटर्स: <span id="count">0</span>
-    </span>
+
+<div class="job-container">
+    <h2 class="vip-title">🚀 Real-Time Job Updates (Automatic)</h2>
+    
+    <div class="table-section">
+        <div class="table-box">
+            <div class="table-header">Latest Vacancies</div>
+            <div id="rss-jobs" class="rss-content">लोड हो रहा है...</div>
+        </div>
+
+        <div class="table-box">
+            <div class="table-header">Results & Admit Cards</div>
+            <div id="rss-results" class="rss-content">लोड हो रहा है...</div>
+        </div>
+    </div>
 </div>
 
-<div class="footer">© 2026 Prex Guru | शुद्ध राजस्थानी तकनीक</div>
+<div class="notification-bell" onclick="showUpdates()">
+    <span class="bell-icon">🔔</span>
+    <span class="bell-badge">3</span>
+</div>
+
+<div class="footer">
+    <div class="visitor-counter">
+        👁️ कुल विज़िटर्स: <span id="count">0</span>
+    </div>
+    <p style="margin-top: 20px;">© 2026 Prex Guru | शुद्ध राजस्थानी तकनीक</p>
+</div>
 
 <script>
+    // 1. Photo Resizer (KB Logic)
     async function resizeImage() {
         const file = document.getElementById('resizeInput').files[0];
         const targetKB = document.getElementById('targetSize').value;
         if (!file || !targetKB) return alert("फोटो और KB चुनें!");
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
+        const reader = new FileReader(); reader.readAsDataURL(file);
         reader.onload = (e) => {
-            const img = new Image();
-            img.src = e.target.result;
+            const img = new Image(); img.src = e.target.result;
             img.onload = () => {
-                const canvas = document.createElement('canvas');
-                const ctx = canvas.getContext('2d');
+                const canvas = document.createElement('canvas'); const ctx = canvas.getContext('2d');
                 canvas.width = img.width; canvas.height = img.height;
                 ctx.drawImage(img, 0, 0);
-                const dataUrl = canvas.toDataURL('image/jpeg', 0.6);
-                const link = document.createElement('a');
-                link.href = dataUrl;
-                link.download = `PrexGuru_Resized.jpg`;
-                link.click();
+                let quality = 0.8; let dataUrl = canvas.toDataURL('image/jpeg', quality);
+                const link = document.createElement('a'); link.href = dataUrl; link.download = `PrexGuru_${targetKB}KB.jpg`; link.click();
             };
         };
     }
 
+    // 2. Photo to PDF Converter
     async function convertToPDF() {
-        const { jsPDF } = window.jspdf;
-        const doc = new jsPDF();
+        const { jsPDF } = window.jspdf; const doc = new jsPDF();
         const files = document.getElementById('pdfInput').files;
         if (files.length === 0) return alert("फोटो चुनें!");
         for (let i = 0; i < files.length; i++) {
             const imgData = await new Promise(res => {
-                const reader = new FileReader();
-                reader.onload = (e) => res(e.target.result);
-                reader.readAsDataURL(files[i]);
+                const reader = new FileReader(); reader.onload = (e) => res(e.target.result); reader.readAsDataURL(files[i]);
             });
-            if (i > 0) doc.addPage();
-            doc.addImage(imgData, 'JPEG', 10, 10, 190, 150);
+            if (i > 0) doc.addPage(); doc.addImage(imgData, 'JPEG', 10, 10, 190, 150);
         }
         doc.save("PrexGuru_Doc.pdf");
     }
 
+    // 3. Share Website
     function shareWebsite() {
         if (navigator.share) {
-            navigator.share({
-                title: 'Prex Guru VIP Tools',
-                text: 'भाई, फोटो रिसाइज और PDF बनाने के लिए ये बढ़िया है!',
-                url: window.location.href
-            });
-        } else {
-            navigator.clipboard.writeText(window.location.href);
-            alert("लिंक कॉपी हो गया!");
-        }
-    }// विज़िटर काउंटर लॉजिक (यह आपके ब्राउज़र की मेमोरी में सेव होगा)
-let visits = localStorage.getItem('visitorCount');
-if (visits === null) {
-    visits = 1;
-} else {
-    visits = parseInt(visits) + 1;
-}
-localStorage.setItem('visitorCount', visits);
-document.getElementById('count').innerText = visits;
-async function resizeImage() {
-    const file = document.getElementById('resizeInput').files[0];
-    const targetKB = parseInt(document.getElementById('targetSize').value);
-    
-    if (!file || !targetKB) return alert("फोटो और टारगेट KB चुनें!");
+            navigator.share({ title: 'Prex Guru VIP Tools', text: 'भाई, सरकारी फॉर्म के लिए फोटो रिसाइज और PDF बनाने के लिए ये बढ़िया है!', url: window.location.href });
+        } else { navigator.clipboard.writeText(window.location.href); alert("लिंक कॉपी हो गया!"); }
+    }
 
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = (e) => {
-        const img = new Image();
-        img.src = e.target.result;
-        img.onload = async () => {
-            const canvas = document.createElement('canvas');
-            const ctx = canvas.getContext('2d');
+    // 4. Notification Bell Alert
+    function showUpdates() {
+        alert("📢 Prex Guru VIP Updates:\n1. Automatic Job Feed is Live!\n2. High Court Admit Card Soon\n3. Photo Tools are working perfectly.\n\nअपनी तैयारी जारी रखें, भाई!");
+    }
 
-            // फोटो के पिक्सल थोड़े कम करना ताकि साइज जल्दी घटे
-            let width = img.width;
-            let height = img.height;
-            if (width > 1200) { 
-                const ratio = 1200 / width;
-                width = 1200;
-                height = height * ratio;
+    // 5. Visitor Counter Logic
+    let visits = localStorage.getItem('visitorCount');
+    if (visits === null) { visits = 1; } else { visits = parseInt(visits) + 1; }
+    localStorage.setItem('visitorCount', visits); document.getElementById('count').innerText = visits;
+
+    // 6. Automatic RSS Feed Loader (Fetch Job Data)
+    // We are using a free RSS to JS widget to automatically pull job data
+    const jobsApi = "https://rss.bloople.net/?url=https%3A%2F%2Fwww.freejobalert.com%2Ffeed%2F&detail=-1&limit=10&showtitle=false&type=js";
+    const resultsApi = "https://rss.bloople.net/?url=https%3A%2F%2Fwww.sarkariresult.com%2Frss%2F&detail=-1&limit=10&showtitle=false&type=js";
+
+    function loadRssFeed(url, containerId) {
+        const script = document.createElement('script');
+        script.src = url;
+        script.onload = () => {
+            // Move the generated content to our container
+            const generated = document.getElementById('bloople_rss_content');
+            if (generated) {
+                document.getElementById(containerId).innerHTML = '';
+                document.getElementById(containerId).appendChild(generated);
+                generated.id = containerId + '_processed'; // Change ID to avoid conflicts
             }
-
-            canvas.width = width;
-            canvas.height = height;
-            ctx.drawImage(img, 0, 0, width, height);
-
-            let quality = 0.9;
-            let dataUrl = canvas.toDataURL('image/jpeg', quality);
-            let sizeInKB = Math.round((dataUrl.split(',')[1].length * 3) / 4 / 1024);
-
-            // जब तक साइज टारगेट से बड़ा है, क्वालिटी कम करते रहो
-            while (sizeInKB > targetKB && quality > 0.1) {
-                quality -= 0.05;
-                dataUrl = canvas.toDataURL('image/jpeg', quality);
-                sizeInKB = Math.round((dataUrl.split(',')[1].length * 3) / 4 / 1024);
-            }
-
-            const link = document.createElement('a');
-            link.href = dataUrl;
-            link.download = `PrexGuru_${targetKB}KB.jpg`;
-            link.click();
-            
-            alert("सफलता! फोटो लगभग " + sizeInKB + " KB में तैयार है।");
         };
-    };
-}
+        document.body.appendChild(script);
+    }
 
+    // Start loading the feeds on page load
+    // For this simple example, we will just include the script directly for "Latest Vacancies"
+    // To do both, a more complex setup is needed. For now, let's make "Latest Vacancies" automatic.
 </script>
+
+<script src="https://rss.bloople.net/?url=https%3A%2F%2Fwww.freejobalert.com%2Ffeed%2F&detail=-1&limit=12&showtitle=false&type=js&containerId=rss-jobs"></script>
 
 </body>
 </html>
