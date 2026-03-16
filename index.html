@@ -3,276 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prex Guru - VIP सरकारी नौकर टूल्स</title>
-    
-    <meta name="title" content="Prex Guru - VIP फोटो रिसाइज और PDF टूल">
-    <meta name="description" content="फोटो को KB में रिसाइज करें, PDF बनाएँ और ऑटोमैटिक सरकारी नौकरी अपडेट पाएं। Prex Guru की VIP तकनीक।">
-    <meta name="keywords" content="Prex Guru, Photo Resize KB, Photo to PDF, Rajasthan Government Jobs, Automatic Job Updates">
-    <meta name="robots" content="index, follow">
-    <meta name="language" content="Hindi">
-    <meta name="author" content="Prex Guru">
-
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://prex7276-lgtm.github.io/Photo-resize-tool/">
-    <meta property="og:title" content="Prex Guru - VIP फोटो रिसाइज और PDF टूल">
-    <meta property="og:description" content="फोटो को KB में रिसाइज करें, PDF बनाएँ और ऑटोमैटिक सरकारी नौकरी अपडेट पाएं।">
-    <meta property="og:image" content="https://prex7276-lgtm.github.io/Photo-resize-tool/logo.png">
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    
+    <title>Prex Guru Exam Portal</title>
     <style>
-        /* Base Styling */
-        body { font-family: 'Segoe UI', sans-serif; background-color: #030712; color: #f8fafc; margin: 0; text-align: center; }
+        :root { --p-blue: #2c3e50; --s-blue: #3498db; --bg: #f4f7f6; --success: #27ae60; --danger: #e74c3c; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--bg); margin: 0; padding: 0; }
+        header { background: var(--p-blue); color: white; padding: 15px; text-align: center; font-size: 22px; font-weight: bold; border-bottom: 4px solid var(--s-blue); }
+        .container { max-width: 700px; margin: 20px auto; padding: 15px; }
         
-        /* News Ticker (Marquee) */
-        .news-ticker { background: #000; color: #f9e29a; display: flex; align-items: center; border-bottom: 1px solid #cf9f2e; font-size: 0.9rem; height: 35px; }
-        .ticker-label { background: #cf9f2e; color: #000; padding: 0 15px; font-weight: bold; height: 100%; display: flex; align-items: center; white-space: nowrap; }
-        marquee { font-weight: 500; }
+        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+        .card { background: white; padding: 20px; border-radius: 10px; text-align: center; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.1); font-weight: bold; border-top: 4px solid var(--s-blue); transition: 0.2s; }
+        .card:hover { transform: scale(1.02); background: var(--s-blue); color: white; }
 
-        /* Header & Logo */
-        header { background: linear-gradient(145deg, #111827, #030712); padding: 40px 10px; border-bottom: 3px solid #cf9f2e; box-shadow: 0 10px 30px rgba(207, 159, 46, 0.3); position: relative; overflow: hidden; }
+        .quiz-box { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .option { padding: 12px; border: 2px solid #ddd; border-radius: 8px; cursor: pointer; margin-top: 10px; }
+        .option:hover { border-color: var(--s-blue); background: #f0f7ff; }
         
-        /* Fire Animation behind Logo */
-        header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 69, 0, 0.2) 0%, rgba(0, 0, 0, 0) 70%);
-            animation: firePulse 3s infinite;
-            z-index: 0;
-        }
-
-        .vip-logo { font-size: 3.5rem; font-weight: bold; text-transform: uppercase; background: linear-gradient(to bottom, #cf9f2e 0%, #f9e29a 50%, #cf9f2e 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 0; letter-spacing: 3px; position: relative; z-index: 1; text-shadow: 0 0 15px rgba(207, 159, 46, 0.7); }
-        .sub-logo { color: #a0aec0; margin-top: 5px; position: relative; z-index: 1; font-size: 1rem; }
-
-        /* Tools Container */
-        .container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 30px; }
-        .tool-card { background: #111827; border: 1px solid #334155; padding: 25px; border-radius: 15px; width: 300px; transition: 0.3s; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
-        .tool-card:hover { border-color: #cf9f2e; box-shadow: 0 0 20px rgba(207, 159, 46, 0.4); transform: translateY(-5px); }
-        
-        input, button { width: 100%; margin: 10px 0; padding: 12px; border-radius: 8px; border: none; box-sizing: border-box; }
-        input[type="file"] { background: #1f2937; color: #a0aec0; border: 1px solid #334155; }
-        input[type="number"] { background: #1f2937; color: white; border: 1px solid #334155; }
-        button { background: linear-gradient(45deg, #cf9f2e, #f9e29a); color: black; font-weight: bold; cursor: pointer; font-size: 1rem; transition: 0.2s; }
-        button:hover { filter: brightness(1.1); box-shadow: 0 0 10px rgba(249, 226, 154, 0.5); }
-        
-        .share-btn { width: auto; padding: 12px 40px; border-radius: 50px; margin: 20px 0; font-size: 1.1rem; border: 2px solid #cf9f2e; background: transparent; color: #f9e29a; cursor: pointer; transition: 0.3s; }
-        .share-btn:hover { background: rgba(207, 159, 46, 0.1); box-shadow: 0 0 15px rgba(207, 159, 46, 0.3); }
-
-        /* Automatic Updates Section (VIP Style) */
-        .job-container { margin-top: 50px; padding: 20px; position: relative; }
-        .vip-title { color: #f9e29a; text-shadow: 0 0 10px #cf9f2e; margin-bottom: 30px; font-size: 2rem; position: relative; display: inline-block; }
-        .vip-title::after { content: ''; position: absolute; bottom: -10px; left: 0; width: 100%; height: 2px; background: linear-gradient(to right, transparent, #cf9f2e, transparent); }
-
-        .table-section { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
-        .table-box { 
-            background: #111827; border: 2px solid #cf9f2e; 
-            width: 380px; border-radius: 12px; overflow: hidden; 
-            box-shadow: 0 0 25px rgba(207, 159, 46, 0.3); 
-            transition: 0.3s;
-        }
-        .table-box:hover { box-shadow: 0 0 35px rgba(207, 159, 46, 0.5); transform: scale(1.02); }
-        
-        .table-header { background: linear-gradient(45deg, #cf9f2e, #f9e29a); color: black; font-weight: bold; padding: 12px; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; }
-        
-        /* Automatic Updates from RSS Feed (Sarkari Result Style) */
-        .rss-content { padding: 10px; text-align: left; max-height: 400px; overflow-y: auto; background: #0a0e17; }
-        .rss-content a { display: block; color: #f1f5f9; text-decoration: none; padding: 12px; border-bottom: 1px solid #1f2937; font-size: 0.9rem; transition: 0.2s; }
-        .rss-content a:hover { color: #f9e29a; padding-left: 15px; background: rgba(207, 159, 46, 0.1); border-left: 3px solid #cf9f2e; }
-
-        /* Fixed Notification Bell */
-        .notification-bell { position: fixed; bottom: 20px; right: 20px; background: linear-gradient(45deg, #cf9f2e, #f9e29a); width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; box-shadow: 0 0 20px rgba(207, 159, 46, 0.5); z-index: 1000; animation: shake 3s infinite; }
-        .bell-icon { font-size: 28px; }
-        .bell-badge { position: absolute; top: 5px; right: 5px; background: red; color: white; font-size: 10px; padding: 3px 6px; border-radius: 50%; font-weight: bold; }
-
-        /* Footer & Visitor Counter */
-        .footer { margin-top: 50px; padding: 30px; border-top: 1px solid #1f2937; color: #64748b; font-size: 0.9rem; background: #0a0e17; }
-        .visitor-counter { margin-top: 15px; font-size: 1rem; color: #f9e29a; display: inline-block; border: 1px solid #cf9f2e; padding: 8px 20px; border-radius: 25px; background: rgba(207, 159, 46, 0.1); }
-
-        /* Animations */
-        @keyframes firePulse { 0%, 100% { opacity: 0.2; transform: scale(1); } 50% { opacity: 0.4; transform: scale(1.1); } }
-        @keyframes blink { 50% { opacity: 0.5; } }
-        @keyframes shake { 0%, 80%, 100% { transform: rotate(0); } 85% { transform: rotate(15deg); } 90% { transform: rotate(-15deg); } 95% { transform: rotate(10deg); } }
-
+        #timer { font-size: 18px; font-weight: bold; color: var(--danger); text-align: right; margin-bottom: 10px; }
+        .hidden { display: none; }
+        .back-btn { background: #95a5a6; color: white; padding: 8px 12px; border: none; border-radius: 5px; cursor: pointer; margin-bottom: 10px; }
     </style>
 </head>
 <body>
 
-<div class="news-ticker">
-    <div class="ticker-label">VIP UPDATES</div>
-    <marquee behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();">
-        🔥 Railway RRB Group D 22,195 Posts Online Form 2026 | 🎓 Rajasthan High Court Exam Date Announced! | 📄 GDS 1st Merit List PDF Available | 🚀 Welcome to Prex Guru Automatic Portal!
-    </marquee>
-</div>
-
-<header>
-    <h1 class="vip-logo">Prex Guru</h1>
-    <p class="sub-logo">प्रीमियम सरकारी नौकरी टूलकिट • फोटो रिसाइज • ऑटोमैटिक अपडेट्स</p>
-</header>
+<header>PREX GURU TEST PORTAL</header>
 
 <div class="container">
-    <div class="tool-card">
-        <h2>🖼️ फोटो रिसाइज</h2>
-        <input type="file" id="resizeInput" accept="image/*">
-        <input type="number" id="targetSize" placeholder="कितने KB चाहिए? (e.g. 50)">
-        <button onclick="resizeImage()">रिसाइज और डाउनलोड</button>
-    </div>
-
-    <div class="tool-card">
-        <h2>📄 Photo से PDF</h2>
-        <input type="file" id="pdfInput" accept="image/*" multiple>
-        <button onclick="convertToPDF()">PDF डाउनलोड करें</button>
-    </div>
-</div>
-
-<button class="share-btn" onclick="shareWebsite()">📢 दोस्तों को शेयर करें</button>
-
-<div class="job-container">
-    <h2 class="vip-title">🚀 Real-Time Job Updates (Automatic)</h2>
-    
-    <div class="table-section">
-        <div class="table-box">
-            <div class="table-header">Latest Vacancies</div>
-            <div id="rss-jobs" class="rss-content">लोड हो रहा है...</div>
-        </div>
-
-        <div class="table-box">
-            <div class="table-header">Results & Admit Cards</div>
-            <div id="rss-results" class="rss-content">लोड हो रहा है...</div>
+    <div id="home-page">
+        <h3>एग्जाम चुनें:</h3>
+        <div class="card-grid">
+            <div class="card" onclick="showSubjects('Raj High Court')">Raj High Court</div>
+            <div class="card" onclick="showSubjects('Raj Police')">Rajasthan Police</div>
+            <div class="card" onclick="showSubjects('NEET')">NEET</div>
         </div>
     </div>
-</div>
 
-<div class="notification-bell" onclick="showUpdates()">
-    <span class="bell-icon">🔔</span>
-    <span class="bell-badge">3</span>
-</div>
-
-<div class="footer">
-    <div class="visitor-counter">
-        👁️ कुल विज़िटर्स: <span id="count">0</span>
+    <div id="subject-page" class="hidden">
+        <button class="back-btn" onclick="showPage('home-page')">← वापस</button>
+        <h3 id="selected-exam"></h3>
+        <div class="card-grid" id="sub-list"></div>
     </div>
-    <p style="margin-top: 20px;">© 2026 Prex Guru | शुद्ध राजस्थानी तकनीक</p>
+
+    <div id="topic-page" class="hidden">
+        <button class="back-btn" onclick="showPage('subject-page')">← वापस</button>
+        <h3 id="selected-sub"></h3>
+        <div class="card-grid" id="topic-list"></div>
+    </div>
+
+    <div id="test-page" class="hidden">
+        <div id="timer">समय: 20:00</div>
+        <div class="quiz-box">
+            <h4 id="q-count">सवाल 1/25</h4>
+            <p id="q-text" style="font-size: 18px; font-weight: bold;"></p>
+            <div id="options-box"></div>
+        </div>
+    </div>
+
+    <div id="result-page" class="hidden">
+        <div class="card" style="cursor: default;">
+            <h2>परिणाम</h2>
+            <p id="final-score" style="font-size: 20px;"></p>
+            <button class="back-btn" style="background: #27ae60;" onclick="location.reload()">Home पर जाएं</button>
+        </div>
+    </div>
 </div>
 
+<script src="questions.js"></script>
+
 <script>
-    // 1. Photo Resizer (KB Logic)
-    async function resizeImage() {
-        const file = document.getElementById('resizeInput').files[0];
-        const targetKB = document.getElementById('targetSize').value;
-        if (!file || !targetKB) return alert("फोटो और KB चुनें!");
-        const reader = new FileReader(); reader.readAsDataURL(file);
-        reader.onload = (e) => {
-            const img = new Image(); img.src = e.target.result;
-            img.onload = () => {
-                const canvas = document.createElement('canvas'); const ctx = canvas.getContext('2d');
-                canvas.width = img.width; canvas.height = img.height;
-                ctx.drawImage(img, 0, 0);
-                let quality = 0.8; let dataUrl = canvas.toDataURL('image/jpeg', quality);
-                const link = document.createElement('a'); link.href = dataUrl; link.download = `PrexGuru_${targetKB}KB.jpg`; link.click();
-            };
-        };
+    let currentQuestions = [];
+    let qIndex = 0;
+    let score = 0;
+    let timer;
+
+    function showPage(id) {
+        document.querySelectorAll('.container > div').forEach(d => d.classList.add('hidden'));
+        document.getElementById(id).classList.remove('hidden');
     }
 
-    // 2. Photo to PDF Converter
-    async function convertToPDF() {
-        const { jsPDF } = window.jspdf; const doc = new jsPDF();
-        const files = document.getElementById('pdfInput').files;
-        if (files.length === 0) return alert("फोटो चुनें!");
-        for (let i = 0; i < files.length; i++) {
-            const imgData = await new Promise(res => {
-                const reader = new FileReader(); reader.onload = (e) => res(e.target.result); reader.readAsDataURL(files[i]);
-            });
-            if (i > 0) doc.addPage(); doc.addImage(imgData, 'JPEG', 10, 10, 190, 150);
-        }
-        doc.save("PrexGuru_Doc.pdf");
-    }
-
-    // 3. Share Website
-    function shareWebsite() {
-        if (navigator.share) {
-            navigator.share({ title: 'Prex Guru VIP Tools', text: 'भाई, सरकारी फॉर्म के लिए फोटो रिसाइज और PDF बनाने के लिए ये बढ़िया है!', url: window.location.href });
-        } else { navigator.clipboard.writeText(window.location.href); alert("लिंक कॉपी हो गया!"); }
-    }
-
-    // 4. Notification Bell Alert
-    function showUpdates() {
-        alert("📢 Prex Guru VIP Updates:\n1. Automatic Job Feed is Live!\n2. High Court Admit Card Soon\n3. Photo Tools are working perfectly.\n\nअपनी तैयारी जारी रखें, भाई!");
-    }
-
-    // 5. Visitor Counter Logic
-    let visits = localStorage.getItem('visitorCount');
-    if (visits === null) { visits = 1; } else { visits = parseInt(visits) + 1; }
-    localStorage.setItem('visitorCount', visits); document.getElementById('count').innerText = visits;
-
-    // 6. Automatic RSS Feed Loader (Fetch Job Data)
-    // We are using a free RSS to JS widget to automatically pull job data
-    const jobsApi = "https://rss.bloople.net/?url=https%3A%2F%2Fwww.freejobalert.com%2Ffeed%2F&detail=-1&limit=10&showtitle=false&type=js";
-    const resultsApi = "https://rss.bloople.net/?url=https%3A%2F%2Fwww.sarkariresult.com%2Frss%2F&detail=-1&limit=10&showtitle=false&type=js";
-
-    function loadRssFeed(url, containerId) {
-        const script = document.createElement('script');
-        script.src = url;
-        script.onload = () => {
-            // Move the generated content to our container
-            const generated = document.getElementById('bloople_rss_content');
-            if (generated) {
-                document.getElementById(containerId).innerHTML = '';
-                document.getElementById(containerId).appendChild(generated);
-                generated.id = containerId + '_processed'; // Change ID to avoid conflicts
-            }
-        };
-        document.body.appendChild(script);
-    }
-
-    // Start loading the feeds on page load
-    // For this simple example, we will just include the script directly for "Latest Vacancies"
-    // To do both, a more complex setup is needed. For now, let's make "Latest Vacancies" automatic.
-</script>
-
-<script src="https://rss.bloople.net/?url=https%3A%2F%2Fwww.freejobalert.com%2Ffeed%2F&detail=-1&limit=12&showtitle=false&type=js&containerId=rss-jobs"></script>
-<script>
-    function fetchJobs() {
-        const feedUrl = "https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.freejobalert.com%2Ffeed%2F";
-        
-        fetch(feedUrl)
-            .then(res => res.json())
-            .then(data => {
-                let html = "";
-                data.items.slice(0, 10).forEach(item => {
-                    html += `<a href="${item.link}" target="_blank">🔥 ${item.title}</a>`;
-                });
-                document.getElementById('rss-jobs').innerHTML = html;
-            })
-            .catch(err => {
-                document.getElementById('rss-jobs').innerHTML = "नेटवर्क स्लो है, कृपया रिफ्रेश करें...";
-            });
-            
-        // Results के लिए Sarkari Result का फीड
-        // Results और Admit Cards के लिए नया और वर्किंग लिंक
-const resultsUrl = "https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.indgovtjobs.in%2Ffeeds%2Fposts%2Fdefault%2F-%2FAdmit%2520Card%3Falt%3Drss";
-
-fetch(resultsUrl)
-    .then(res => res.json())
-    .then(data => {
+    function showSubjects(exam) {
+        document.getElementById('selected-exam').innerText = exam;
+        let subs = ["हिन्दी", "English", "Rajasthan GK"];
         let html = "";
-        if (data.items && data.items.length > 0) {
-            data.items.slice(0, 10).forEach(item => {
-                html += `<a href="${item.link}" target="_blank">✅ ${item.title}</a>`;
-            });
-        } else {
-            html = "<p style='color:grey; padding:10px;'>अभी कोई नया अपडेट नहीं है...</p>";
-        }
-        document.getElementById('rss-results').innerHTML = html;
-    })
-    .catch(err => {
-        document.getElementById('rss-results').innerHTML = "लिंक लोड करने में समस्या, रिफ्रेश करें।";
-    });
+        subs.forEach(s => html += `<div class="card" onclick="showTopics('${s}')">${s}</div>`);
+        document.getElementById('sub-list').innerHTML = html;
+        showPage('subject-page');
+    }
 
+    function showTopics(sub) {
+        document.getElementById('selected-sub').innerText = sub;
+        let topics = (sub === "हिन्दी") ? ["संधि", "समास", "पर्यायवाची"] : ["Topic 1", "Topic 2"];
+        let html = "";
+        topics.forEach(t => {
+            for(let i=1; i<=20; i++) {
+                html += `<div class="card" onclick="startTest('${sub}-${t}-${i}')">${t} - टेस्ट ${i}</div>`;
+            }
+        });
+        document.getElementById('topic-list').innerHTML = html;
+        showPage('topic-page');
+    }
+
+    function startTest(id) {
+        currentQuestions = allQuestions[id] || [];
+        if(currentQuestions.length === 0) return alert("इस टेस्ट के सवाल अभी अपडेट हो रहे हैं!");
+        
+        qIndex = 0; score = 0;
+        showPage('test-page');
+        loadQuestion();
+        // Timer Logic (20 min)
+        let time = 1200;
+        timer = setInterval(() => {
+            time--;
+            let m = Math.floor(time/60), s = time%60;
+            document.getElementById('timer').innerText = `समय: ${m}:${s<10?'0'+s:s}`;
+            if(time <= 0) endTest();
+        }, 1000);
+    }
+
+    function loadQuestion() {
+        let q = currentQuestions[qIndex];
+        document.getElementById('q-count').innerText = `सवाल ${qIndex+1}/${currentQuestions.length}`;
+        document.getElementById('q-text').innerText = q.q;
+        let html = "";
+        q.options.forEach((o, i) => html += `<div class="option" onclick="checkAns(${i})">${o}</div>`);
+        document.getElementById('options-box').innerHTML = html;
+    }
+
+    function checkAns(idx) {
+        if(idx === currentQuestions[qIndex].correct) score++;
+        qIndex++;
+        if(qIndex < currentQuestions.length) loadQuestion(); else endTest();
+    }
+
+    function endTest() {
+        clearInterval(timer);
+        showPage('result-page');
+        document.getElementById('final-score').innerText = `आपका स्कोर: ${score} / ${currentQuestions.length}`;
+    }
 </script>
-
 </body>
 </html>
